@@ -1,4 +1,4 @@
-﻿// Fetch the visitor count from the Azure Function and show it in the footer.
+// Fetch the visitor count from the Azure Function and show it in the footer.
 // The API is added in a later step; until then the page keeps showing "-".
 async function loadCount() {
   const el = document.getElementById("count");
