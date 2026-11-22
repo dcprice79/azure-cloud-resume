@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Price — Cloud Engineer Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0f5c63;
+      --teal-dark: #0a4449;
+      --teal-light: #e8f4f5;
+      --ink: #0e1416;
+      --ink-2: #33474b;
+      --ink-3: #63797d;
+      --rule: #d3dede;
+      --bg: #f4f8f8;
+      --white: #ffffff;
+      --good: #2f6b4f;
+      --good-soft: #deebe4;
+      --amber: #8a6410;
+      --amber-soft: #f6ebd3;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--teal);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    header .subtitle {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      margin-bottom: 1.2rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .header-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .header-links a:hover { opacity: 1; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ── SECTION ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      font-family: 'Courier New', monospace;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid var(--rule);
+    }
+
+    section { margin-bottom: 3rem; }
+
+    /* ── SUMMARY ── */
+    .summary {
+      font-size: 1rem;
+      color: var(--ink-2);
+      line-height: 1.75;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .cert-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .cert-body .cert-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .cert-body .cert-detail {
+      font-size: 0.78rem;
+      color: var(--ink-3);
+    }
+
+    /* ── PROJECTS ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 20px rgba(15,92,99,0.12);
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .project-num {
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--teal);
+      font-weight: 600;
+      background: var(--teal-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .project-status {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .status-done {
+      background: var(--good-soft);
+      color: var(--good);
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--ink-3);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 2px 7px;
+      color: var(--ink-3);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── CONTACT CTA ── */
+    .cta {
+      background: var(--teal);
+      color: white;
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta p {
+      font-size: 0.9rem;
+      opacity: 0.88;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cta-btn:hover { background: var(--teal-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--ink-3);
+      border-top: 1px solid var(--rule);
+    }
+
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Chris Price</h1>
+    <div class="subtitle">Cloud Engineer &nbsp;·&nbsp; AWS Certified Solutions Architect – Associate</div>
+    <div class="badges">
+      <span class="badge">AWS SAA-C03</span>
+      <span class="badge">AWS Cloud Practitioner</span>
+      <span class="badge">CompTIA Security+ CE</span>
+      <span class="badge">CompTIA Network+</span>
+      <span class="badge">ITIL Foundations</span>
+    </div>
+    <div class="header-links">
+      <a href="https://github.com/dcprice79" target="_blank">GitHub — dcprice79</a>
+      <a href="https://linkedin.com/in/chris-price-09b99526" target="_blank">LinkedIn</a>
+      <a href="contact.html">Contact me</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SUMMARY -->
+    <section>
+      <div class="section-label">About</div>
+      <div class="summary">
+        Enterprise IT infrastructure engineer with 9+ years running multi-site operations for a large healthcare system, now AWS-certified and building cloud infrastructure hands-on. Twelve documented AWS projects spanning Infrastructure as Code in both Terraform and CloudFormation, serverless architecture, VPC network design, IAM security, cloud security auditing, and FinOps cost optimization. Open to remote cloud engineering, cloud support, and cloud operations roles.
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section>
+      <div class="section-label">Certifications</div>
+      <div class="cert-grid">
+
+        <div class="cert-card">
+          <div class="cert-icon">☁️</div>
+          <div class="cert-body">
+            <div class="cert-name">AWS Solutions Architect – Associate</div>
+            <div class="cert-detail">SAA-C03 · Valid to Mar 2028</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">☁️</div>
+          <div class="cert-body">
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-detail">CLF-C02 · Valid to Mar 2027</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🔒</div>
+          <div class="cert-body">
+            <div class="cert-name">CompTIA Security+ CE</div>
+            <div class="cert-detail">DoD 8570/8140 IAT Level II compliant</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div class="cert-body">
+            <div class="cert-name">CompTIA Network+</div>
+            <div class="cert-detail">DoD 8570/8140 IAT Level I compliant</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">📋</div>
+          <div class="cert-body">
+            <div class="cert-name">ITIL Foundations v3</div>
+            <div class="cert-detail">IT Service Management</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">☁️</div>
+          <div class="cert-body">
+            <div class="cert-name">AWS AI Practitioner</div>
+            <div class="cert-detail">In progress</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <div class="section-label">AWS Portfolio — 12 Projects</div>
+      <div class="project-grid">
+
+        <a class="project-card" href="https://github.com/dcprice79/project-18-terraform" target="_blank">
+          <div class="project-top">
+            <span class="project-num">18</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Terraform Infrastructure as Code</div>
+          <div class="project-desc">Deployed full VPC infrastructure using Terraform HCL — providers, variables, resources, outputs, and complete lifecycle management.</div>
+          <div class="project-tags">
+            <span class="tag">Terraform</span>
+            <span class="tag">HCL</span>
+            <span class="tag">VPC</span>
+            <span class="tag">IaC</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-09-cloudformation" target="_blank">
+          <div class="project-top">
+            <span class="project-num">09</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Infrastructure as Code with CloudFormation</div>
+          <div class="project-desc">Parameterized YAML template deploying multi-AZ VPC with live stack update and full lifecycle management.</div>
+          <div class="project-tags">
+            <span class="tag">CloudFormation</span>
+            <span class="tag">YAML</span>
+            <span class="tag">IaC</span>
+            <span class="tag">VPC</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-11-security-audit" target="_blank">
+          <div class="project-top">
+            <span class="project-num">11</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">AWS Security Audit</div>
+          <div class="project-desc">Full account security audit using Trusted Advisor, Security Hub, GuardDuty, and IAM Access Analyzer — all controls passed.</div>
+          <div class="project-tags">
+            <span class="tag">Security Hub</span>
+            <span class="tag">GuardDuty</span>
+            <span class="tag">IAM</span>
+            <span class="tag">CIS</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-17-cost-optimization" target="_blank">
+          <div class="project-top">
+            <span class="project-num">17</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Cost Optimization and FinOps Audit</div>
+          <div class="project-desc">Cost governance using Cost Explorer, Compute Optimizer, AWS Budgets, and Cost and Usage Reports.</div>
+          <div class="project-tags">
+            <span class="tag">Cost Explorer</span>
+            <span class="tag">Budgets</span>
+            <span class="tag">FinOps</span>
+            <span class="tag">CUR</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-07-serverless-contact-form" target="_blank">
+          <div class="project-top">
+            <span class="project-num">07</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Serverless Contact Form</div>
+          <div class="project-desc">Event-driven serverless app — API Gateway triggers Lambda which calls SES to deliver real emails. Live and functional.</div>
+          <div class="project-tags">
+            <span class="tag">Lambda</span>
+            <span class="tag">API Gateway</span>
+            <span class="tag">SES</span>
+            <span class="tag">Python</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-08-three-tier-architecture" target="_blank">
+          <div class="project-top">
+            <span class="project-num">08</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Three-Tier Web Architecture</div>
+          <div class="project-desc">Complete enterprise web architecture — ALB load balancer, EC2 nginx web server, and RDS MySQL database in private subnets with tiered security groups enforcing least-privilege between each layer.</div>
+          <div class="project-tags">
+            <span class="tag">VPC</span>
+            <span class="tag">EC2</span>
+            <span class="tag">RDS</span>
+            <span class="tag">ALB</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-06-cloudfront" target="_blank">
+          <div class="project-top">
+            <span class="project-num">06</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">CloudFront CDN and HTTPS</div>
+          <div class="project-desc">Added CloudFront CDN in front of S3 with automatic HTTP to HTTPS redirect and global edge delivery.</div>
+          <div class="project-tags">
+            <span class="tag">CloudFront</span>
+            <span class="tag">HTTPS</span>
+            <span class="tag">CDN</span>
+            <span class="tag">SSL</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-04-vpc-architecture" target="_blank">
+          <div class="project-top">
+            <span class="project-num">04</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Custom VPC Network Architecture</div>
+          <div class="project-desc">Built a complete VPC with public and private subnets, Internet Gateway, route tables, and security groups.</div>
+          <div class="project-tags">
+            <span class="tag">VPC</span>
+            <span class="tag">Subnets</span>
+            <span class="tag">IGW</span>
+            <span class="tag">Security Groups</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-03-iam-security" target="_blank">
+          <div class="project-top">
+            <span class="project-num">03</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">IAM Security and Access Control</div>
+          <div class="project-desc">Configured least-privilege IAM groups, MFA enforcement, and validated policies using the Policy Simulator.</div>
+          <div class="project-tags">
+            <span class="tag">IAM</span>
+            <span class="tag">MFA</span>
+            <span class="tag">Least Privilege</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-02-ec2-linux" target="_blank">
+          <div class="project-top">
+            <span class="project-num">02</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">EC2 with Linux and SSH</div>
+          <div class="project-desc">Launched Amazon Linux 2023 EC2 instance with CloudWatch monitoring, SNS alerting, and SSH remote administration.</div>
+          <div class="project-tags">
+            <span class="tag">EC2</span>
+            <span class="tag">Linux</span>
+            <span class="tag">CloudWatch</span>
+            <span class="tag">SNS</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-05-linux-lab" target="_blank">
+          <div class="project-top">
+            <span class="project-num">05</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Linux Systems Administration</div>
+          <div class="project-desc">Advanced Linux administration with Bash scripting, systemctl, nginx, and automated system health monitoring.</div>
+          <div class="project-tags">
+            <span class="tag">Bash</span>
+            <span class="tag">Linux</span>
+            <span class="tag">nginx</span>
+            <span class="tag">systemctl</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/dcprice79/project-01-s3-website" target="_blank">
+          <div class="project-top">
+            <span class="project-num">01</span>
+            <span class="project-status status-done">Complete</span>
+          </div>
+          <div class="project-title">Static Website on S3 and CloudFront</div>
+          <div class="project-desc">Hosted a static portfolio website on S3 with public bucket policy and CloudFront HTTPS delivery.</div>
+          <div class="project-tags">
+            <span class="tag">S3</span>
+            <span class="tag">CloudFront</span>
+            <span class="tag">Static Hosting</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section>
+      <div class="cta">
+        <h2>Open to cloud opportunities</h2>
+        <p>Cloud Engineer · Cloud Operations · Cloud Support · Remote preferred</p>
+        <a href="contact.html" class="cta-btn">Get in touch</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Built with AWS · Hosted on S3 + CloudFront · 
+    <a href="https://github.com/dcprice79" target="_blank">github.com/dcprice79</a>
+  </footer>
+
+</body>
+</html>
